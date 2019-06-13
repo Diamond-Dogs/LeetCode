@@ -1,0 +1,31 @@
+暴力算法（超时）
+class Solution {
+public:
+    int strStr(string haystack, string needle) {
+        int hLen=haystack.size();
+        int nLen=needle.size();
+        if(hLen==0&&nLen!=0)
+            return -1;
+        if(nLen==0)
+            return 0;
+        int index=-1;
+        int j;
+        for(int i=0;i<hLen;++i){
+            int j;
+            int flag=0;
+            if(haystack[i]==needle[0]){
+                for(j=1;j<nLen;++j){
+                    if(haystack[j+i]!=needle[j]){
+                        flag=1;
+                        break;
+                    }
+                }
+                if(flag==0){
+                    index=i;
+                    break;
+                }
+            }
+        }
+        return index;
+    }
+};
